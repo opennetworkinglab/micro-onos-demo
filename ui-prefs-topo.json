@@ -1,0 +1,14 @@
+{
+  "insts": 1,
+  "summary": 1,
+  "detail": 1,
+  "hosts": 1,
+  "offdev": 1,
+  "dlbls": 1,
+  "hlbls": 0,
+  "porthl": 1,
+  "bg": 0,
+  "spr": 0,
+  "ovid": "traffic",
+  "toolbar": 0
+}

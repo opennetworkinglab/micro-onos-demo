@@ -1,0 +1,42 @@
+{
+    "role": "leaf",
+    "config": {
+        "softwareVersion": "1.0.0",
+        "properties": [
+            {
+                "path": "/interfaces/interface[name=1/0]/config/health-indicator",
+                "type": "string_val",
+                "value": "GOOD"
+            },
+            {
+                "path": "/interfaces/interface[name=1/0]/config/enabled",
+                "type": "bool_val",
+                "value": "true"
+            },
+            {
+                "path": "/interfaces/interface[name=2/0]/config/health-indicator",
+                "type": "string_val",
+                "value": "BAD"
+            },
+            {
+                "path": "/interfaces/interface[name=2/0]/config/enabled",
+                "type": "bool_val",
+                "value": "false"
+            },
+            {
+                "path": "/interfaces/interface[name=3/0]/config/health-indicator",
+                "type": "string_val",
+                "value": "GOOD"
+            },
+            {
+                "path": "/interfaces/interface[name=3/0]/config/enabled",
+                "type": "bool_val",
+                "value": "true"
+            }
+        ]
+    },
+    "pipeline": {
+        "driver": "stratum-tofino",
+        "pipeconf": "org.onosproject.pipelines.fabric-simple.mavericks"
+    }
+}

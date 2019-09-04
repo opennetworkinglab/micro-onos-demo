@@ -1,0 +1,7 @@
+#!/bin/bash
+
+curl -X PUT -H "Content-type: application/json" --user onos:rocks http://localhost:8181/onos/v1/ui/preferences/onos/topo_zoom -d @ui-prefs-zoom.json
+curl -X PUT -H "Content-type: application/json" --user onos:rocks http://localhost:8181/onos/v1/ui/preferences/onos/topo_prefs -d @ui-prefs-topo.json
+
+onos-netcfg localhost ~/go/src/github.com/onosproject/onos-ztp/test/demo-nodes-netcfg.json
+onos-app localhost reinstall! $(dirname $0)/onos-pipelines-fabric_2.2-SNAPSHOT_sde-8.9.1_simple.oar

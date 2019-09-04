@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export SWITCHES="10.128.13.221 10.128.13.222 10.128.13.223"
+for switch in $SWITCHES; do
+    echo $switch:
+    ssh root@$switch '
+        docker ps --format "{{.ID}}: {{.Image}}" | grep stratum-bf | cut -d: -f 1 | xargs docker stop -t 1
+    ' &
+done
+wait

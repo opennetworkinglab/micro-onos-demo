@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo ip netns add h1  # add h1 network namespace
+sudo ip netns add h2  # add h2 network namespace
+
+sudo ip link set enp3s0f0 netns h1  # bind enp3s0f0 to h1
+sudo ip link set enp3s0f1 netns h2  # bind enp3s0f1 to h2
+
+# Set IP Addresses:
+sudo ip netns exec h1 ifconfig enp3s0f0 10.0.0.1/24
+sudo ip netns exec h2 ifconfig enp3s0f1 10.0.0.2/24
+
+$(dirname $0)/discover-hosts
