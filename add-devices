@@ -26,6 +26,12 @@ set +x
 echo "Press enter to switch leaf devices peers to true leaves..."
 read foo
 
+# Change leaves into hybrids
+set -x
+ocli onos topo update device wedge1 --role hybrid
+ocli onos topo update device wedge2 --role hybrid
+set +x
+
 # Change leaves into proper leaves
 set -x
 ocli onos topo update device wedge1 --role leaf
