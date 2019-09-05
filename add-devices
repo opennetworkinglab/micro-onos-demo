@@ -2,26 +2,32 @@
 shopt -s expand_aliases
 source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
 
-ocli onos topo remove device wedge1
-ocli onos topo remove device wedge2
-ocli onos topo remove device wedge3
+ocli onos topo remove device wedge1 >/dev/null
+ocli onos topo remove device wedge2 >/dev/null
+ocli onos topo remove device wedge3 >/dev/null
 
 echo "Press enter to add and provision leaf devices as peers..."
 read foo
 
 # Add our leaf devices, but as peers
+set -x
 ocli onos topo add device wedge1 --address 10.128.13.221:28000 --type Stratum --version 1.0.0 --plain --insecure --role peer --attributes="x=300,y=400"
 ocli onos topo add device wedge2 --address 10.128.13.222:28000 --type Stratum --version 1.0.0 --plain --insecure --role peer --attributes="x=700,y=400"
+set +x
 
 echo "Press enter to add and provision spine device..."
 read foo
 
 # Add our spine
+set -x
 ocli onos topo add device wedge3 --address 10.128.13.223:28000 --type Stratum --version 1.0.0 --plain --insecure --role spine --attributes="x=500,y=200"
+set +x
 
 echo "Press enter to switch leaf devices peers to true leaves..."
 read foo
 
 # Change leaves into proper leaves
+set -x
 ocli onos topo update device wedge1 --role leaf
 ocli onos topo update device wedge2 --role leaf
+set +x

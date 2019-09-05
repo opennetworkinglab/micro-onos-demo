@@ -3,5 +3,6 @@ shopt -s expand_aliases
 source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
 
 # Add our leaf devices, but as peers
+set -x
 ocli onos topo update device wedge1 --role ${1:peer}
 ocli onos topo update device wedge2 --role ${1:peer}

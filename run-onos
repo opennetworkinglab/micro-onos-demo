@@ -3,9 +3,7 @@
 # Runs ONOS from distributable onos.tar.gz
 # -----------------------------------------------------------------------------
 
-export ONOS_APPS=drivers,gui,drivers.barefoot,lldpprovider,hostprovider
-#cd ~/onos
-#bazel run onos-local -- ${1:-clean}
+export ONOS_APPS=drivers,gui,drivers.barefoot,lldpprovider,hostprovider,proxyarp
 
 # ONOS_TAR=$HOME/onos/bazel-bin/onos.tar.gz
 ONOS_TAR=$(dirname $0)/onos-2.2.0.tar.gz
@@ -63,7 +61,7 @@ oldMD5=$(cat $ONOS_MD5 2>/dev/null)
 newMD5=$(${md5cmd} ${md5cmdprm} $ONOS_TAR)
 
 # Search for the "clean" argument anywhere on the command-line
-echo "$@" | egrep -q "\bclean\b" && clean=true || unset clean
+clean=true
 
 set -e          # Do not tolerate any errors from this point onward
 
