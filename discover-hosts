@@ -1,5 +1,7 @@
 #!/bin/bash
 
-sudo ip netns exec h1 ping -w 1 10.0.0.2  # h1 -> h2
-sudo ip netns exec h2 ping -w 1 10.0.0.1  # h2 -> h1
-
+while true; do
+    sudo ip netns exec h1 ping -w 1 10.0.0.2  # h1 -> h2
+    sudo ip netns exec h2 ping -w 1 10.0.0.1  # h2 -> h1
+    sleep 2
+done
