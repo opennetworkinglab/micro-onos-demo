@@ -34,6 +34,6 @@ Add devices in a sequence:
 
 Set role of wedge 65 switches:
 ```
-~/demo/set-wedge-65-roles {leaf|peer}
+~/demo/set-wedge-65-roles {leaf|peer|hybrid}
 ```
 
