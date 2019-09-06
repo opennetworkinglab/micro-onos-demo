@@ -1,0 +1,2 @@
+#!/bin/bash
+onit create cluster onos-demo --image-tags config=latest,topo=latest --topo-nodes 2

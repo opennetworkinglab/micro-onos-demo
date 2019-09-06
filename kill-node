@@ -1,0 +1,5 @@
+#!/bin/bash
+nodes=$(onit get nodes --type topo --no-headers 2>/dev/null)
+node=($(echo "${nodes}" | awk '{print $1}'))
+kubectl delete pod -n $(onit get cluster) ${node} > /dev/null 2>&1 &
+kubectl get pods -n $(onit get cluster) -w
