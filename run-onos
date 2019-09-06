@@ -4,6 +4,8 @@
 # -----------------------------------------------------------------------------
 
 export ONOS_APPS=drivers,gui,drivers.barefoot,lldpprovider,hostprovider,proxyarp
+export EXDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 
 # ONOS_TAR=$HOME/onos/bazel-bin/onos.tar.gz
 ONOS_TAR=$(dirname $0)/onos-2.2.0.tar.gz
@@ -115,6 +117,16 @@ export ONOS_HOME=$PWD
 ./bin/onos-service server "$@" &>onos.log &
 echo "$!" > /tmp/onos.pid
 
+
+# Hang on a bit and the start monitoring the log for time when we can safely configure ONOS
+function waitToConfigure {
+    (tail -n +1 -f $1 | \
+         grep --line-buffered "Application org.onosproject.drivers.barefoot has been activated") | \
+        (head -n1 && ps -ef | grep "tail -n +1 -f $1" | grep -v grep | \
+                 awk '{print $2}' | xargs kill -9)
+    $EXDIR/configure-onos
+}
+
 # Hang-on a bit and then start tailing the ONOS log output
 MAX_RETRY=30
 echo "Waiting for karaf.log"
@@ -122,6 +134,7 @@ until [ $MAX_RETRY -le 0 ]; do
     KARAF_LOG=$(find $ONOS_HOME -type f -name karaf.log)
     if [ $KARAF_LOG ]; then
         trap killServer INT
+        waitToConfigure $KARAF_LOG &
         tail -f $KARAF_LOG
         return
     fi
