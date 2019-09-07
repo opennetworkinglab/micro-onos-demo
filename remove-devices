@@ -1,0 +1,7 @@
+#!/bin/bash
+shopt -s expand_aliases
+source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
+
+ocli onos topo remove device ec-wedge-65-1
+ocli onos topo remove device ec-wedge-65-2
+ocli onos topo remove device ec-wedge-32

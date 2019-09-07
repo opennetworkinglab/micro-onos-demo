@@ -1,5 +1,6 @@
 #!/bin/bash
 
 $(dirname $0)/reset-switches
+$(dirname $0)/remove-devices
 $(dirname $0)/update-roles
 $(dirname $0)/run-onos

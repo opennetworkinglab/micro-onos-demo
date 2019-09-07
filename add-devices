@@ -2,9 +2,7 @@
 shopt -s expand_aliases
 source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
 
-ocli onos topo remove device ec-wedge-65-1 >/dev/null
-ocli onos topo remove device ec-wedge-65-2 >/dev/null
-ocli onos topo remove device ec-wedge-32 >/dev/null
+$(dirname $0)/remove-devices >/dev/null 2>&1
 
 echo "Press enter to add and provision leaf devices as peers..."
 read foo
