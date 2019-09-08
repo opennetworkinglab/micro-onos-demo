@@ -14,7 +14,7 @@ def command():
     return "", 200 if return_code == 0 else 500
 
 try:
-    app.run(host="0.0.0.0", port=80, debug=False)
+    app.run(host="0.0.0.0", port=8080, debug=False)
 except KeyboardInterrupt:
     pass
 
