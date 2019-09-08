@@ -1,0 +1,5 @@
+#!/bin/bash
+shopt -s expand_aliases
+source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
+
+ocli onos topo add device ec-wedge-32 --address 10.128.13.223:28000 --type Stratum --version 1.0.0 --plain --insecure --role spine --attributes="x=500,y=200"

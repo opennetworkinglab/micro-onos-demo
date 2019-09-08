@@ -1,0 +1,9 @@
+#!/bin/bash
+shopt -s expand_aliases
+source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
+
+$(dirname $0)/remove-devices
+
+# Add our leaf devices, but as peers
+ocli onos topo add device ec-wedge-65-1 --address 10.128.13.221:28000 --type Stratum --version 1.0.0 --plain --insecure --role peer --attributes="x=300,y=400"
+ocli onos topo add device ec-wedge-65-2 --address 10.128.13.222:28000 --type Stratum --version 1.0.0 --plain --insecure --role peer --attributes="x=700,y=400"
