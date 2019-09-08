@@ -1,0 +1,9 @@
+#!/bin/bash
+shopt -s expand_aliases
+source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
+
+# Stage some files on the onos-cli node for creating roles, etc.
+for r in spine leaf peer hybrid; do
+  echo "$r:"
+  okctl cp $(dirname $0)/roles/$r.json $(okpid cli):/tmp
+done

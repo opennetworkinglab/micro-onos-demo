@@ -2,5 +2,6 @@
 
 $(dirname $0)/reset-switches &
 $(dirname $0)/remove-devices &
-$(dirname $0)/create-roles &
+$(dirname $0)/upload-roles &
 $(dirname $0)/run-onos
+
