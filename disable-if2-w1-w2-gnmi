@@ -1,0 +1,10 @@
+#!/bin/bash
+shopt -s expand_aliases
+source $GOPATH/src/github.com/onosproject/onos-config/build/bash_aliases
+
+ocli gnmi_cli -address onos-config:5150 -set \
+    -proto "update: <path: <target: 'ec-wedge-65-1', elem: <name: 'interfaces'> elem: <name: 'interface' key:<key:'name' value:'2/0' >> elem: <name: 'config'> elem: <name: 'health-indicator'>> val: <string_val: 'BAD'>> update: <path: <target: 'ec-wedge-65-1', elem: <name: 'interfaces'> elem: <name: 'interface' key:<key:'name' value:'2/0' >> elem: <name: 'config'> elem: <name: 'enabled'>> val: <bool_val: false>> update: <path: <target: 'ec-wedge-65-2', elem: <name: 'interfaces'> elem: <name: 'interface' key:<key:'name' value:'2/0' >> elem: <name: 'config'> elem: <name: 'health-indicator'>> val: <string_val: 'BAD'>> update: <path: <target: 'ec-wedge-65-2', elem: <name: 'interfaces'> elem: <name: 'interface' key:<key:'name' value:'2/0' >> elem: <name: 'config'> elem: <name: 'enabled'>> val: <bool_val: false>> extension: <registered_ext: <id: 100, msg:'disable-if2-w1-w2'>>" \
+    -timeout 5s -alsologtostderr \
+    -client_crt /etc/ssl/certs/client1.crt \
+    -client_key /etc/ssl/certs/client1.key \
+    -ca_crt /etc/ssl/certs/onfca.crt
