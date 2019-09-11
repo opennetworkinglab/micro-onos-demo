@@ -1,2 +1,4 @@
 #!/bin/bash
 onit add app onos-ztp --image onosproject/onos-ztp:latest
+
+upload-roles
