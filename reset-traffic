@@ -1,3 +1,5 @@
 #!/bin/bash
 
 ps -ef | grep iperf3 | grep -v grep | grep -v sudo | awk '{print $2}' | xargs sudo kill -9
+ps -ef | grep gen-traffic | grep -v grep | grep -v sudo | awk '{print $2}' | xargs sudo kill -9
+

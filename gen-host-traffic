@@ -1,14 +1,10 @@
 #!/bin/bash
 
+sudo ip netns exec h1 iperf3 -s &
+spid=$!
+
 while true; do
-  sudo ip netns exec h1 iperf3 -s &
-  spid=$!
-
-  while true; do
-      sudo ip netns exec h2 iperf3 -c 10.0.0.1
-      sleep 1
-  done
-  sudo kill $spid
-
-  sleep 1
+    sudo ip netns exec h2 iperf3 -c 10.0.0.1
+    sleep 1
 done
+sudo kill $spid
